@@ -73,7 +73,7 @@ We’ll train a **Sentiment Analysis model** using an **LSTM (RNN)** to classify
 Example input to inference API:
 ```json
 {
-  "text": "I am so sad"
+  "text": "I am Nho Luong"
 }
 ```
 
@@ -198,7 +198,7 @@ resource "aws_ecs_cluster" "ml_cluster" {
 
 # ECR Repositories
 ```json
-resource "aws_ecr_repository" "ml_model_deploy" {
+resource "aws_ecr_repository" "ml-on-aws" {
   name = "ml-model-deploy-repo"
 }
 ```
@@ -304,7 +304,7 @@ http://<load_balancer_dns>/parseinputs
 #### Sample Request:
 ```json
 {
-  "text": "I am so sad"
+  "text": "I am Nho Luong"
 }
 ```
 #### Sample Response:
@@ -320,15 +320,7 @@ http://<load_balancer_dns>/parseinputs
 - Deploy REST API to EKS
 - Add monitoring, CI/CD, autoscaling
 
-
 This concludes the end-to-end process to build a training pipeline using Airflow, train an LSTM-based RNN, and deploy the model to AWS ECS Fargate for inference. This is a solid starting point to build production-ready AI pipelines.
-```json
-
-Let me know if you'd like me to:
-- Save this complete markdown again as `.md`
-- Convert to a styled PDF or HTML
-- Package with folder structure and GitHub-ready repo format &#8203;:contentReference[oaicite:0]{index=0}&#8203;
-```
 
 ![](https://i.imgur.com/waxVImv.png)
 # I'm are always open to your feedback🚀
