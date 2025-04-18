@@ -1,0 +1,29 @@
+name: Deploy Airflow Service
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  deploy_updated_airflow_service:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+    - name: Scale down service
+      run: |
+        aws ecs update-service --cluster ml-cluster --service airflow-service --desired-count 0
+    - name: Scale Up service
+      run: |
+        aws ecs update-service --cluster ml-cluster --service airflow-service --desired-count 1
+    

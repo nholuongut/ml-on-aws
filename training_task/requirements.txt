@@ -1,0 +1,13 @@
+fastapi
+gunicorn
+uvicorn[standard]
+tensorflow
+scikit-learn
+mlem
+datasets
+nltk
+numpy
+pandas
+seaborn
+matplotlib
+boto3
